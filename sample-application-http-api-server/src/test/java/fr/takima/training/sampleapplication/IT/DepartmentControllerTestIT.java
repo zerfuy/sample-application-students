@@ -22,7 +22,7 @@ public class DepartmentControllerTestIT {
     private MockMvc mockMvc;
 
     @Test
-    @Sql({"/CreateSchema.sql", "/InsertData.sql"})
+    @Sql({"/InsertData.sql"})
     void testGetDepartmentByName() throws Exception {
         mockMvc.perform(get("/departments/ASI/"))
                 .andExpect(status().isOk())
@@ -31,14 +31,14 @@ public class DepartmentControllerTestIT {
     }
 
     @Test
-    @Sql({"/CreateSchema.sql", "/InsertData.sql"})
+    @Sql({"/InsertData.sql"})
     void testGetNonExistingDepartmentByName() throws Exception {
         mockMvc.perform(get("/departments/NIMPORTEQUOI/"))
                 .andExpect(status().isNotFound());
     }
 
     @Test
-    @Sql({"/CreateSchema.sql", "/InsertData.sql"})
+    @Sql({"/InsertData.sql"})
     void testGetDepartmentStudentsByName() throws Exception {
         mockMvc.perform(get("/departments/ASI/students"))
                 .andExpect(status().isOk())
@@ -50,14 +50,14 @@ public class DepartmentControllerTestIT {
     }
 
     @Test
-    @Sql({"/CreateSchema.sql", "/InsertData.sql"})
+    @Sql({"/InsertData.sql"})
     void testGetNonExistingDepartmentStudentsByName() throws Exception {
         mockMvc.perform(get("/departments/NIMPORTEQUOI/students"))
                 .andExpect(status().isNotFound());
     }
 
     @Test
-    @Sql({"/CreateSchema.sql", "/InsertData.sql"})
+    @Sql({"/InsertData.sql"})
     void testGetDepartmentCountByName() throws Exception {
         mockMvc.perform(get("/departments/ASI/count"))
                 .andExpect(status().isOk())
@@ -65,7 +65,7 @@ public class DepartmentControllerTestIT {
     }
 
     @Test
-    @Sql({"/CreateSchema.sql", "/InsertData.sql"})
+    @Sql({"/InsertData.sql"})
     void testGetNonExistingDepartmentCountsByName() throws Exception {
         mockMvc.perform(get("/departments/NIMPORTEQUOI/count"))
                 .andExpect(status().isNotFound());

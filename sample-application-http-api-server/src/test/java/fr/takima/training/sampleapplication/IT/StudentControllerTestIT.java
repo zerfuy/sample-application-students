@@ -23,7 +23,7 @@ public class StudentControllerTestIT {
     private MockMvc mockMvc;
 
     @Test
-    @Sql({"/CreateSchema.sql", "/InsertData.sql"})
+    @Sql({"/InsertData.sql"})
     void testGetStudentById() throws Exception {
         mockMvc.perform(get("/students/6"))
                 .andExpect(status().isOk())
@@ -35,14 +35,14 @@ public class StudentControllerTestIT {
     }
 
     @Test
-    @Sql({"/CreateSchema.sql", "/InsertData.sql"})
+    @Sql({"/InsertData.sql"})
     void testGetNonExistingStudentById() throws Exception {
         mockMvc.perform(get("/students/666"))
                 .andExpect(status().isNotFound());
     }
 
     @Test
-    @Sql({"/CreateSchema.sql", "/InsertData.sql"})
+    @Sql({"/InsertData.sql"})
     void testPostStudent() throws Exception {
         String body = "{\n" +
                 "    \"firstname\": \"Didier\",\n" +
@@ -60,7 +60,7 @@ public class StudentControllerTestIT {
     }
 
     @Test
-    @Sql({"/CreateSchema.sql", "/InsertData.sql"})
+    @Sql({"/InsertData.sql"})
     void testPostStudentWithoutLastName() throws Exception {
         String body = "{\n" +
                 "    \"firstname\": \"Didier\",\n" +
@@ -76,7 +76,7 @@ public class StudentControllerTestIT {
     }
 
     @Test
-    @Sql({"/CreateSchema.sql", "/InsertData.sql"})
+    @Sql({"/InsertData.sql"})
     void testPostStudentWithoutDepartment() throws Exception {
         String body = "{\n" +
                 "    \"lastname\": \"Didier\",\n" +
@@ -89,14 +89,14 @@ public class StudentControllerTestIT {
     }
 
     @Test
-    @Sql({"/CreateSchema.sql", "/InsertData.sql"})
+    @Sql({"/InsertData.sql"})
     void testUpdateStudent() throws Exception {
-        mockMvc.perform(get("/students/77"))
-                .andExpect(jsonPath("id", equalTo(77)))
-                .andExpect(jsonPath("firstname", equalTo("Magee")))
-                .andExpect(jsonPath("lastname", equalTo("Buchanan")))
-                .andExpect(jsonPath("department.id", equalTo(5)))
-                .andExpect(jsonPath("department.name", equalTo("GM")));
+        mockMvc.perform(get("/students/11"))
+                .andExpect(jsonPath("id", equalTo(11)))
+                .andExpect(jsonPath("firstname", equalTo("Sophie")))
+                .andExpect(jsonPath("lastname", equalTo("Schutt")))
+                .andExpect(jsonPath("department.id", equalTo(9)))
+                .andExpect(jsonPath("department.name", equalTo("PERF-I")));
 
         String body = "{\n" +
                 "    \"firstname\": \"Francis\",\n" +
@@ -106,11 +106,11 @@ public class StudentControllerTestIT {
                 "        \"name\": \"ASI\"\n" +
                 "    }\n" +
                 "}";
-        mockMvc.perform(put("/students/77")
+        mockMvc.perform(put("/students/11")
                 .content(body)
                 .contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("id", equalTo(77)))
+                .andExpect(jsonPath("id", equalTo(11)))
                 .andExpect(jsonPath("firstname", equalTo("Francis")))
                 .andExpect(jsonPath("lastname", equalTo("Huster")))
                 .andExpect(jsonPath("department.id", equalTo(1)))
@@ -118,7 +118,7 @@ public class StudentControllerTestIT {
     }
 
     @Test
-    @Sql({"/CreateSchema.sql", "/InsertData.sql"})
+    @Sql({"/InsertData.sql"})
     void testDeleteStudent() throws Exception {
         mockMvc.perform(get("/students/1"))
                 .andExpect(jsonPath("id", equalTo(1)));

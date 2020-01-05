@@ -1,8 +1,8 @@
 package fr.takima.training.sampleapplication.unit;
 
 import fr.takima.training.sampleapplication.dao.StudentDAO;
-import fr.takima.training.sampleapplication.entity.Department;
 import fr.takima.training.sampleapplication.entity.Student;
+import fr.takima.training.sampleapplication.entity.Department;
 import fr.takima.training.sampleapplication.service.StudentService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
