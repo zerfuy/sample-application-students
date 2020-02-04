@@ -15,6 +15,7 @@
     <name>sample-application</name>
     <description>Demo project for Spring Boot</description>
 
+
     <parent>
         <groupId>org.springframework.cloud</groupId>
         <artifactId>spring-cloud-starter-parent</artifactId>
