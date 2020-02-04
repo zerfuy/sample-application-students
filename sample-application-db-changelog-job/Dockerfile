@@ -6,7 +6,9 @@ RUN ls
 
 RUN ls ${TRAVIS_BUILD_DIR}/
 
-RUN ls /home/travis/build/zerfuy/sample-application-students/sample-application-db-changelog-job/target/
+RUN ls /home/travis/build/zerfuy/
+RUN ls /home/travis/build/
+RUN ls /home/travis/
 
 COPY ${TRAVIS_BUILD_DIR}/sample-application-students/sample-application-db-changelog-job/target/sample-application-db-changelog-job-0.0.1-SNAPSHOT-exec.jar /sample-application-db-changelog-job-0.0.1-SNAPSHOT-exec.jar
 
