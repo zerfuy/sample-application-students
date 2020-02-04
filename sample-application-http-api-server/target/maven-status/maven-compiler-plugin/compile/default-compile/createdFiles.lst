@@ -1,0 +1,11 @@
+fr/takima/training/sampleapplication/controller/DepartmentController.class
+fr/takima/training/sampleapplication/entity/Department.class
+fr/takima/training/sampleapplication/entity/Student$Builder.class
+fr/takima/training/sampleapplication/service/StudentService.class
+fr/takima/training/sampleapplication/dao/StudentDAO.class
+fr/takima/training/sampleapplication/entity/Student.class
+fr/takima/training/sampleapplication/service/DepartmentService.class
+fr/takima/training/sampleapplication/entity/Department$Builder.class
+fr/takima/training/sampleapplication/dao/DepartmentDAO.class
+fr/takima/training/sampleapplication/SampleApplication.class
+fr/takima/training/sampleapplication/controller/StudentController.class
