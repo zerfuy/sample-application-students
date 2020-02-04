@@ -4,4 +4,4 @@ jdk:
 
 jobs:
   include:
-    - mvn clean verify
+    - script: mvn clean verify
