@@ -36,6 +36,7 @@
         <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
         <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
         <sonar.exclusions>**/*Configuration.*, **/*Application*.*</sonar.exclusions>
+        <sonar.java.libraries>target</sonar.java.libraries>
     </properties>
 
     <dependencyManagement>

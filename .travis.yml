@@ -28,5 +28,5 @@ jobs:
       - docker tag travis-app $usernameDocker/travis-app # rename
       - docker push $usernameDocker/travis-app
 
-      - sonar-scanner
+      - sonar-scanner 
 
