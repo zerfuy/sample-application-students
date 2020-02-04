@@ -4,9 +4,9 @@ jdk:
 
 addons:
   sonarcloud:
-    organization: "zerfui" # the key of the org you chose at step #3
+    organization: "zerfuy" # the key of the org you chose at step #3
     token:
-      secure: "$SONAR_TOKEN" # encrypted value of your token"$"
+      secure: $SONAR_TOKEN # encrypted value of your token"$"
 cache:
     directories:
      - $HOME/.m2/repository
