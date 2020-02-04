@@ -5,3 +5,20 @@ jdk:
 jobs:
   include:
     - script: mvn clean verify
+
+jobs:
+  include:
+    if: branch = develop
+    script:
+      - cd sample-application-db-changelog-job
+      - mvn package
+      - echo "$passwordDocker" | docker login -u "$usernameDocker" --password-stdin
+      - docker build -t travis-db .
+      - docker tag travis-db $usernameDocker/travis-db
+      - docker push $usernameDocker/travis-db
+
+      - cd ../sample-application-http-api-server
+      - mvn package
+      - docker build -t travis-app .
+      - docker tag travis-app $usernameDocker/travis-app
+      - docker push $usernameDocker/travis-app
