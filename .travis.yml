@@ -2,6 +2,10 @@ language: java
 jdk:
   - oraclejdk11
 
+cache:
+    directories:
+     - $HOME/.m2/repository
+
 jobs:
   include:
     - script: mvn clean verify
@@ -10,15 +14,11 @@ jobs:
   include:
     if: branch = develop
     script:
-      - cd sample-application-db-changelog-job
-      - mvn package
       - echo "$passwordDocker" | docker login -u "$usernameDocker" --password-stdin
-      - docker build -t travis-db .
-      - docker tag travis-db $usernameDocker/travis-db
+      - docker build -t travis-db ./sample-application-db-changelog-job
+      - docker tag travis-db $usernameDocker/travis-db # rename
       - docker push $usernameDocker/travis-db
 
-      - cd ../sample-application-http-api-server
-      - mvn package
-      - docker build -t travis-app .
-      - docker tag travis-app $usernameDocker/travis-app
+      - docker build -t travis-app ./sample-application-http-api-server
+      - docker tag travis-app $usernameDocker/travis-app # rename
       - docker push $usernameDocker/travis-app
