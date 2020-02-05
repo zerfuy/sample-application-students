@@ -16,8 +16,7 @@ jobs:
   include:
     script: 
     - mvn clean verify
-    - sonar-scanner -Dsonar.projectKey=zerfuy_sample-application
-    
+    - sonar-scanner -Dsonar.projectKey=zerfuy_sample-application-students
 
 jobs:
   include:
