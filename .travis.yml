@@ -16,7 +16,7 @@ jobs:
   include:
     script: 
     - mvn clean verify
-    - sonar-scanner -Dproject.settings=./sonar-project.properties
+    - sonar-scanner -Dsonar.projectKey=zerfuy_sample-application
     
 
 jobs:
