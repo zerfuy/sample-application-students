@@ -2,13 +2,22 @@ language: java
 jdk:
   - oraclejdk11
 
+addons:
+  sonarcloud:
+    organization: "zerfuy" # the key of the org you chose at step #3
+    token:
+      secure: "$SONAR_TOKEN" # encrypted value of your token
+      
 cache:
     directories:
      - $HOME/.m2/repository
 
 jobs:
   include:
-    - script: mvn clean verify
+    script: 
+    - mvn clean verify
+    - sonar-scanner -Dproject.settings=./sonar-project.properties
+    
 
 jobs:
   include:
