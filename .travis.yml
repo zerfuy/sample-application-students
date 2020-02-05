@@ -29,5 +29,6 @@ jobs:
       - docker tag travis-app $usernameDocker/travis-app # rename
       - docker push $usernameDocker/travis-app
 
-      - sonar-scanner -Dproject.settings=./sonar-project.properties
+      - sonar-scanner -Dproject.settings=./sample-application-http-api-server/sonar-project.properties
+      
 
