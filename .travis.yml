@@ -6,7 +6,7 @@ addons:
   sonarcloud:
     organization: "zerfuy" # the key of the org you chose at step #3
     token:
-      secure: "$SONAR_TOKEN" # encrypted value of your token
+      secure: "1dd51bd2f57f80a7d657a165d4ab46cf6d11bb7e" # encrypted value of your token
       
 cache:
     directories:
@@ -15,8 +15,7 @@ cache:
 jobs:
   include:
     script: 
-    - mvn clean verify
-    - sonar-scanner -Dsonar.projectKey=zerfuy_sample-application-students
+    - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=zerfuy_sample-application-students
 
 jobs:
   include:
