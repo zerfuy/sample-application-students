@@ -2,6 +2,34 @@ language: java
 jdk:
   - oraclejdk11
 
+addons:
+  sonarcloud:
+    organization: "zerfuy" # the key of the org you chose at step #3
+    token:
+      secure: "$SONAR_TOKEN" # encrypted value of your token
+
+cache:
+    directories:
+     - $HOME/.m2/repository
+
 jobs:
   include:
-    - script: mvn clean verify
+    script: 
+      - mvn clean verify
+      - sonar-scanner -Dproject.settings=./sample-application-http-api-server/sonar-project.properties
+
+jobs:
+  include:
+    if: branch = develop
+    script:
+      - echo "$passwordDocker" | docker login -u "$usernameDocker" --password-stdin
+      - docker build -t travis-db ./sample-application-db-changelog-job
+      - docker tag travis-db $usernameDocker/travis-db # rename
+      - docker push $usernameDocker/travis-db
+
+      - docker build -t travis-app ./sample-application-http-api-server
+      - docker tag travis-app $usernameDocker/travis-app # rename
+      - docker push $usernameDocker/travis-app
+
+
+
